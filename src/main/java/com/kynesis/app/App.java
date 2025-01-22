@@ -6,7 +6,9 @@ import javafx.stage.Stage;
 
 public class App extends Application {
   @Override
-  public void start(Stage stage) throws IOException {}
+  public void start(Stage stage) throws IOException {
+    stage.show();
+  }
 
   public static void main(String[] args) {
     launch();
