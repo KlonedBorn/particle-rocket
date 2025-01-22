@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane styleClass="dark-theme" stylesheets="@../style/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.kynesis.controller.Designer">
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="15" styleClass="toolbar">
+            <Button onAction="#onActionUndoAction" styleClass="action-button" text="Undo" />
+            <Button onAction="#onActionRedoAction" styleClass="action-button" text="Redo" />
+            <Separator orientation="VERTICAL" />
+            <Button onAction="#onActionnConfirmAndClear" styleClass="action-button" text="Clear All" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button onAction="#onActionLaunchRocket" styleClass="launch-button" text="Launch 🚀" />
+        </HBox>
+    </top>
+    
+    <left>
+        <VBox prefWidth="280.0" spacing="15" styleClass="toolbox">
+            <Label style="-fx-text-fill: white;" styleClass="header-label" text="Part Toolbox" />
+            <Separator />
+            <ToggleButton maxWidth="Infinity" styleClass="part-button" text="Struct">
+            <toggleGroup>
+               <ToggleGroup fx:id="partSelector" />
+            </toggleGroup></ToggleButton>
+            <ToggleButton maxWidth="Infinity" styleClass="part-button" text="Frame" toggleGroup="$partSelector" />
+            <ToggleButton maxWidth="Infinity" styleClass="part-button" text="Igniter" toggleGroup="$partSelector" />
+            <ToggleButton maxWidth="Infinity" styleClass="part-button" text="Fuel Block" toggleGroup="$partSelector" />
+        </VBox>
+    </left>
+    
+    <bottom>
+        <HBox alignment="CENTER_LEFT" spacing="15" styleClass="status-bar">
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-text-fill: white;" text="Status: Ready" />
+            <Separator orientation="VERTICAL" />
+            <Label fx:id="partCount" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-text-fill: white;" text="Parts: 0" />
+        </HBox>
+    </bottom>
+   <center>
+      <ScrollPane fx:id="scroller" fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" hvalue="0.5" pannable="true" prefHeight="600.0" prefWidth="900.0" styleClass="building-area" vbarPolicy="NEVER" vvalue="0.5" BorderPane.alignment="CENTER">
+         <content>
+            <VBox alignment="CENTER">
+               <children>
+                  <Pane fx:id="builder" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1600.0" prefWidth="1600.0" styleClass="canvas" />
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>
